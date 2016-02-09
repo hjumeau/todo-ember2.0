@@ -1,0 +1,30 @@
+<header class="header">
+    <h1>todos</h1>
+    {{input type="text" value=newTitle class="new-todo" placeholder="What needs to be done?" insert-newline=(action 'createTodo')}}
+</header>
+<section class="main">
+    <ul class="todo-list">
+        {{#each todos as |todo|}}
+            <li>
+                {{todo-element todo=todo}}
+            </li>
+        {{/each}}
+    </ul>
+</section>
+{{#if todos}}
+    <footer class="footer">
+        <span class="todo-count"><strong></strong> left</span>
+        <ul class="filters">
+            <li>
+                All
+            </li>
+            <li>
+                Active
+            </li>
+            <li>
+                Completed
+            </li>
+        </ul>
+        <button class="clear-completed">Clear completed</button>
+    </footer>
+{{/if}}
