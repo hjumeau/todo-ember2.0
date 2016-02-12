@@ -1,0 +1,15 @@
+<footer class="footer">
+    <span class="todo-count"><strong>{{todoCount}}</strong> left</span>
+    <ul class="filters">
+        <li>
+            {{#link-to 'todos.index' activeClass='selected'}}All{{/link-to}}
+        </li>
+        <li>
+            {{#link-to 'todos.active' activeClass='selected'}}Active{{/link-to}}
+        </li>
+        <li>
+            {{#link-to 'todos.completed' activeClass='selected'}}Completed{{/link-to}}
+        </li>
+    </ul>
+    <button class="clear-completed" onclick={{clearCompleted}}>Clear completed</button>
+</footer>

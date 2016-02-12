@@ -1,4 +1,5 @@
 /*jshint node:true*/
+var id = 0;
 module.exports = function (app) {
     var express = require('express');
     var todosRouter = express.Router();
@@ -10,7 +11,11 @@ module.exports = function (app) {
     });
 
     todosRouter.post('/', function (req, res) {
-        res.status(201).end();
+        res.send({
+            'todos': {
+                id: ++id
+            }
+        });
     });
 
     todosRouter.get('/:id', function (req, res) {
