@@ -6,30 +6,33 @@ module.exports = function (app) {
 
     todosRouter.get('/', function (req, res) {
         res.send({
-            'todos': []
+            'data': []
         });
     });
 
     todosRouter.post('/', function (req, res) {
         res.send({
-            'todos': {
-                id: ++id
+            'data': {
+                id: ++id,
+                type:'todo'
             }
         });
     });
 
     todosRouter.get('/:id', function (req, res) {
         res.send({
-            'todos': {
-                id: req.params.id
+            'data': {
+                id: req.params.id,
+                type:'todo'
             }
         });
     });
 
-    todosRouter.put('/:id', function (req, res) {
+    todosRouter.patch('/:id', function (req, res) {
         res.send({
-            'todos': {
-                id: req.params.id
+            'data': {
+                id: req.params.id,
+                type:'todo'
             }
         });
     });

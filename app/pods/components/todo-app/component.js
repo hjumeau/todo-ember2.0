@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-    store: Ember.inject.service(),
+    todoService: Ember.inject.service('todo'),
 
     willRender(){
         var filteredTodos = this.get('filter') ? this.get('todos').filter(this.get('filter')) : this.get('todos');
@@ -11,34 +11,20 @@ export default Ember.Component.extend({
 
     remainingTodos: Ember.computed.filterBy('todos', 'isCompleted', false),
 
-    remainingTodoCount: Ember.computed.alias('remainingTodos.length'),
+    remainingTodosCount: Ember.computed.alias('remainingTodos.length'),
 
     actions: {
         createTodo(title){
-            var todo;
-
-            // Create the new Todo model
-            todo = this.get('store').createRecord('todo', {
-                title: title,
-                isCompleted: false
-            });
-            todo.save();
+            this.get('todoService').create(title);
         },
         updateTodo(todoItem){
-            var foundTodo = this.get('todos').findBy('id', todoItem.get('id'));
-            foundTodo.setProperties({
-                title: todoItem.get('title'),
-                isCompleted: todoItem.get('isCompleted')
-            });
-            foundTodo.save();
+            this.get('todoService').update(todoItem);
         },
         removeTodo(todoItem){
-            var foundTodo = this.get('todos').findBy('id', todoItem.get('id'));
-            foundTodo.destroyRecord();
+            this.get('todoService').remove(todoItem);
         },
         clearCompleted(){
-            var filteredTodos = this.get('todos').filterBy('isCompleted', true);
-            filteredTodos.forEach((todo)=> todo.destroyRecord());
+            this.get('todoService').clearCompleted();
         }
     }
 });
