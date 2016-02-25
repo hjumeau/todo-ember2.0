@@ -11,5 +11,5 @@
             {{#link-to 'todos.completed' activeClass='selected'}}Completed{{/link-to}}
         </li>
     </ul>
-    <button class="clear-completed" onclick={{clearCompleted}}>Clear completed</button>
+    <button class="clear-completed" {{action clearCompleted}}>Clear completed</button>
 </footer>

@@ -8,9 +8,6 @@ export default Ember.Component.extend({
         toggleStatus(){
             this.get('todoItem').toggleProperty('isCompleted');
             this.attrs.updateTodo(this.get('todoItem'));
-        },
-        removeTodo(){
-            this.attrs.removeTodo(this.get('todoItem'));
         }
     }
 });
