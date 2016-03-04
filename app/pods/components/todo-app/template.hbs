@@ -2,7 +2,7 @@
 <section class="main">
     <ul class="todo-list">
         {{#each filteredTodos as |todo|}}
-            {{todo-item todo=todo updateTodo=(action 'updateTodo') removeTodo=(action 'removeTodo')}}
+            {{todo-item todo=todo toggleTodo=(action 'toggleTodo') removeTodo=(action 'removeTodo')}}
         {{/each}}
     </ul>
 </section>

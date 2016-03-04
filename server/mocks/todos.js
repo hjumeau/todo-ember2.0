@@ -51,5 +51,5 @@ module.exports = function (app) {
     // this mock uncommenting the following line:
     //
     //app.use('/api/todos', require('body-parser').json());
-    app.use('/api/todos', todosRouter);
+    app.use('/todos', todosRouter);
 };
